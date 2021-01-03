@@ -8,4 +8,11 @@ client = commands.Bot( command_prefix = '.' )
 async def on_ready():
     print( "Bot is ready" )
 
-client.run( "Nzk1Mzg5Mzc2NjM2OTExNjE4.X_IqFQ.M8EI-WyLHGcUfnpxgYuKG1aJObI" )
+# @client.command()
+
+
+with open("bot_Token.txt","r") as f:
+    string = f.read()
+    token = str( string )
+
+client.run( token )

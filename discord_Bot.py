@@ -8,7 +8,15 @@ client = commands.Bot( command_prefix = '.' )
 async def on_ready():
     print( "Bot is ready" )
 
-# @client.command()
+# example command: ".roll 50"
+@client.command()
+async def roll(ctx, secondArg):
+    try: 
+        int(secondArg)
+        print(ctx.message.author.id)
+    except:
+        await ctx.send( "INVALID NUMBER" )
+    
 
 
 with open("bot_Token.txt","r") as f:

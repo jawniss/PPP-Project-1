@@ -1,5 +1,6 @@
 import discord
 import random
+import asyncio
 from discord.ext import commands
 
 import ast
@@ -45,7 +46,7 @@ async def roll(ctx, secondArg):
     elif win_status == 0:
         usersDict[ctx.message.author.id] -= secondArg
     
-    username = ctx.guild.get_member( ctx.message.author.id )
+    username = client.get_user(ctx.message.author.id).name
     usermoney = usersDict[ctx.message.author.id]
     
     if usersDict[ctx.message.author.id] < 0 :

@@ -8,9 +8,9 @@ import ast
 client = commands.Bot( command_prefix = '.' )
 
 # Get dictionary from file and store is as usersDict
-file = open("storage_File.txt", "r")
 
 try: 
+    file = open("storage_File.txt", "r")
     contents = file.read()
     usersDict = ast.literal_eval( contents )
     file.close()
@@ -44,9 +44,10 @@ async def roll(ctx, secondArg):
         usersDict[ctx.message.author.id] += secondArg
     elif win_status == 0:
         usersDict[ctx.message.author.id] -= secondArg
-        
-    username = ctx.message.server.get_member("id")
+    
+    username = ctx.guild.get_member( ctx.message.author.id )
     usermoney = usersDict[ctx.message.author.id]
+    
     if usersDict[ctx.message.author.id] < 0 :
         await ctx.send(f'{username} is broke.')
     await ctx.send(f'{username} has {usermoney}')
@@ -56,9 +57,6 @@ async def roll(ctx, secondArg):
 
     
     
-    
-
-
 with open("bot_Token.txt","r") as f:
     string = f.read()
     token = str( string )
